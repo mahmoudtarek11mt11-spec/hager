@@ -1,142 +1,106 @@
 <!DOCTYPE html>
 <html lang="ar">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Love ❤️</title>
 
 <style>
 
 body{
-
-    background:#ffd6e7;
-
-    text-align:center;
-
-    font-family:Arial;
-
     margin:0;
-
     padding:0;
-
+    overflow:hidden;
+    background:linear-gradient(135deg,#ffd6e7,#ffc0cb);
+    text-align:center;
+    font-family:Arial;
 }
 
 .container{
-
     margin-top:50px;
-
+    position:relative;
+    z-index:2;
 }
 
 h1{
-
     color:#d10068;
-
     font-size:35px;
-
 }
 
 img{
-
     width:250px;
-
     border-radius:20px;
-
-    margin-top:20px;
-
-}
-
-.buttons{
-
-    margin-top:25px;
-
+    margin:20px 0;
 }
 
 button{
-
     border:none;
-
     padding:15px 35px;
-
     font-size:20px;
-
     border-radius:12px;
-
     cursor:pointer;
-
+    position:relative;
 }
 
 #yesBtn{
-
-    background:green;
-
+    background:#2ecc71;
     color:white;
-
 }
 
 #noBtn{
-
-    background:red;
-
+    background:#e74c3c;
     color:white;
-
-    margin-left:10px;
-
+    position:absolute;
+    margin-left:20px;
 }
 
 #finalPage{
-
     display:none;
-
-    margin-top:40px;
-
 }
 
 #finalPage h2{
-
     color:#d10068;
+    font-size:28px;
+}
 
-    font-size:30px;
+.heart{
+    position:fixed;
+    top:-20px;
+    font-size:25px;
+    animation:fall linear infinite;
+    z-index:1;
+}
 
+@keyframes fall{
+    to{
+        transform:translateY(110vh);
+    }
 }
 
 </style>
-
 </head>
-
 <body>
+
+<audio autoplay loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+</audio>
 
 <div class="container">
 
-<h1>
-بحبك يا هاكر ممكن نرجع؟ ❤️
-</h1>
+<h1>بحبك يا هاكر ممكن نرجع؟ ❤️</h1>
 
 <img id="firstImage" src="first.png">
 
-<div class="buttons">
+<br><br>
 
-<button id="yesBtn">
-Yes
-</button>
-
-<button id="noBtn">
-No
-</button>
-
-</div>
+<button id="yesBtn">Yes</button>
+<button id="noBtn">No</button>
 
 <div id="finalPage">
 
 <h2>
-
 معدش هعمل كدا تاني والله وعد ❤️<br><br>
-
 انتي أحلي حاجة حصلت ليا ❤
-
 </h2>
 
 <img src="final.png">
@@ -147,38 +111,51 @@ No
 
 <script>
 
-let yesBtn = document.getElementById("yesBtn");
+let noBtn=document.getElementById("noBtn");
+let yesBtn=document.getElementById("yesBtn");
+let finalPage=document.getElementById("finalPage");
 
-let noBtn = document.getElementById("noBtn");
+noBtn.addEventListener("mouseover",()=>{
 
-let finalPage = document.getElementById("finalPage");
+let x=Math.random()*(window.innerWidth-150);
+let y=Math.random()*(window.innerHeight-100);
 
-let size = 20;
-
-noBtn.addEventListener("click", ()=>{
-
-    size += 15;
-
-    yesBtn.style.fontSize = size + "px";
-
-    yesBtn.style.padding = (size/2) + "px " + size + "px";
+noBtn.style.left=x+"px";
+noBtn.style.top=y+"px";
 
 });
 
-yesBtn.addEventListener("click", ()=>{
+yesBtn.addEventListener("click",()=>{
 
-    document.querySelector("h1").style.display = "none";
+document.querySelector("h1").style.display="none";
+document.getElementById("firstImage").style.display="none";
+yesBtn.style.display="none";
+noBtn.style.display="none";
 
-    document.getElementById("firstImage").style.display = "none";
-
-    document.querySelector(".buttons").style.display = "none";
-
-    finalPage.style.display = "block";
+finalPage.style.display="block";
 
 });
+
+function createHeart(){
+
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(Math.random()*3+3)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+
+}
+
+setInterval(createHeart,300);
 
 </script>
 
 </body>
-
 </html>
