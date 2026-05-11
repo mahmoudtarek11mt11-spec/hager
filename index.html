@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Love ❤️</title>
+
+<style>
+
+body{
+
+    background:#ffd6e7;
+
+    text-align:center;
+
+    font-family:Arial;
+
+    margin:0;
+
+    padding:0;
+
+}
+
+.container{
+
+    margin-top:50px;
+
+}
+
+h1{
+
+    color:#d10068;
+
+    font-size:35px;
+
+}
+
+img{
+
+    width:250px;
+
+    border-radius:20px;
+
+    margin-top:20px;
+
+}
+
+.buttons{
+
+    margin-top:25px;
+
+}
+
+button{
+
+    border:none;
+
+    padding:15px 35px;
+
+    font-size:20px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+}
+
+#yesBtn{
+
+    background:green;
+
+    color:white;
+
+}
+
+#noBtn{
+
+    background:red;
+
+    color:white;
+
+    margin-left:10px;
+
+}
+
+#finalPage{
+
+    display:none;
+
+    margin-top:40px;
+
+}
+
+#finalPage h2{
+
+    color:#d10068;
+
+    font-size:30px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>
+بحبك يا هاكر ممكن نرجع؟ ❤️
+</h1>
+
+<img id="firstImage" src="first.png">
+
+<div class="buttons">
+
+<button id="yesBtn">
+Yes
+</button>
+
+<button id="noBtn">
+No
+</button>
+
+</div>
+
+<div id="finalPage">
+
+<h2>
+
+معدش هعمل كدا تاني والله وعد ❤️<br><br>
+
+انتي أحلي حاجة حصلت ليا ❤
+
+</h2>
+
+<img src="final.png">
+
+</div>
+
+</div>
+
+<script>
+
+let yesBtn = document.getElementById("yesBtn");
+
+let noBtn = document.getElementById("noBtn");
+
+let finalPage = document.getElementById("finalPage");
+
+let size = 20;
+
+noBtn.addEventListener("click", ()=>{
+
+    size += 15;
+
+    yesBtn.style.fontSize = size + "px";
+
+    yesBtn.style.padding = (size/2) + "px " + size + "px";
+
+});
+
+yesBtn.addEventListener("click", ()=>{
+
+    document.querySelector("h1").style.display = "none";
+
+    document.getElementById("firstImage").style.display = "none";
+
+    document.querySelector(".buttons").style.display = "none";
+
+    finalPage.style.display = "block";
+
+});
+
+</script>
+
+</body>
+
+</html>
